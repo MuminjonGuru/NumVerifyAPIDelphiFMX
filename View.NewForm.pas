@@ -62,7 +62,7 @@ begin
   RESTClient1.ResetToDefaults;
   RESTClient1.Accept := 'application/json';
   RESTClient1.AcceptCharset := 'UTF-8, *;q=0.8';
-  RESTClient1.BaseURL := 'http://apilayer.net/api/validate';
+  RESTClient1.BaseURL := 'https://api.apilayer.com/number_verification/validate';
 
   if ChkFormat.IsChecked then
   begin
@@ -71,8 +71,8 @@ begin
   else
     IsDebug := '0';
 
-  RESTRequest1.Resource := Format('?access_key=%s&number=%s&country_code=%s&format=%s',
-    [EdtAccKey.Text, EdtPhoneNum.Text, CBBCountryCode.Selected.Text, IsDebug]);
+  RESTRequest1.Resource := Format('?apikey=%s&number=%s',
+    [EdtAccKey.Text, EdtPhoneNum.Text]);
   RESTResponse1.ContentType := 'application/json';
 
   // send request
